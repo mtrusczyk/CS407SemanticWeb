@@ -1,0 +1,666 @@
+@prefix : <http://www.example.com/BookOntology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.example.com/BookOntology#> .
+
+<http://www.example.com/BookOntology#> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.com/BookOntology#IsWrittenBy
+:IsWrittenBy rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :Wrote ;
+             rdfs:domain :Book ;
+             rdfs:range :Author .
+
+
+###  http://www.example.com/BookOntology#Wrote
+:Wrote rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf owl:topObjectProperty ;
+       rdfs:domain :Author ;
+       rdfs:range :Book .
+
+
+###  http://www.example.com/BookOntology#contains
+:contains rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isFeaturedIn ;
+          rdfs:domain :Book ;
+          rdfs:range :BookContent .
+
+
+###  http://www.example.com/BookOntology#isFeaturedIn
+:isFeaturedIn rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :BookContent ;
+              rdfs:range :Book .
+
+
+###  http://www.example.com/BookOntology#ratedBook
+:ratedBook rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Rating ;
+           rdfs:range :Book .
+
+
+###  http://www.example.com/BookOntology#ratingWroteBy
+:ratingWroteBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :wroteRating ;
+               rdfs:domain :Rating ;
+               rdfs:range :Reader .
+
+
+###  http://www.example.com/BookOntology#wroteRating
+:wroteRating rdf:type owl:ObjectProperty ;
+             rdfs:domain :Reader ;
+             rdfs:range :Rating .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.com/BookOntology#intendedAge
+:intendedAge rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty .
+
+
+###  http://www.example.com/BookOntology#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.example.com/BookOntology#pageCount
+:pageCount rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty .
+
+
+###  http://www.example.com/BookOntology#rating
+:rating rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty .
+
+
+###  http://www.example.com/BookOntology#title
+:title rdf:type owl:DatatypeProperty ,
+                owl:FunctionalProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.com/BookOntology#Action
+:Action rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Fiction
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :contains ;
+                                                     owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                          owl:unionOf ( :BattlesBookContent
+                                                                                        :GunsBookContent
+                                                                                        :WarBookContent
+                                                                                      )
+                                                                        ]
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://www.example.com/BookOntology#AliensBookContent
+:AliensBookContent rdf:type owl:Class ;
+                   rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#Author
+:Author rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :name ;
+                          owl:someValuesFrom xsd:string
+                        ] ;
+        owl:disjointWith :Book .
+
+
+###  http://www.example.com/BookOntology#BattlesBookContent
+:BattlesBookContent rdf:type owl:Class ;
+                    rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#Biography
+:Biography rdf:type owl:Class ;
+           rdfs:subClassOf :NonFiction .
+
+
+###  http://www.example.com/BookOntology#Book
+:Book rdf:type owl:Class ;
+      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                        owl:onProperty :IsWrittenBy ;
+                        owl:someValuesFrom :Author
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :pageCount ;
+                        owl:someValuesFrom xsd:int
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :title ;
+                        owl:someValuesFrom xsd:string
+                      ] .
+
+
+###  http://www.example.com/BookOntology#BookContent
+:BookContent rdf:type owl:Class .
+
+
+###  http://www.example.com/BookOntology#CookBook
+:CookBook rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :NonFiction
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :contains ;
+                                                       owl:allValuesFrom :RecipieBookContent
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.example.com/BookOntology#DragonsBookContent
+:DragonsBookContent rdf:type owl:Class ;
+                    rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#ElvesBookContent
+:ElvesBookContent rdf:type owl:Class ;
+                  rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#EspionageBookContent
+:EspionageBookContent rdf:type owl:Class ;
+                      rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#Fantasy
+:Fantasy rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Fiction
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty :contains ;
+                                                      owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                           owl:unionOf ( :DragonsBookContent
+                                                                                         :ElvesBookContent
+                                                                                         :GoblinsBookContent
+                                                                                         :MagicBookContent
+                                                                                         :OrcsBookContent
+                                                                                         :WizardsBookContent
+                                                                                       )
+                                                                         ]
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] .
+
+
+###  http://www.example.com/BookOntology#Fiction
+:Fiction rdf:type owl:Class ;
+         rdfs:subClassOf :Book ;
+         owl:disjointWith :NonFiction .
+
+
+###  http://www.example.com/BookOntology#GhostsBookContent
+:GhostsBookContent rdf:type owl:Class ;
+                   rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#GoblinsBookContent
+:GoblinsBookContent rdf:type owl:Class ;
+                    rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#GunsBookContent
+:GunsBookContent rdf:type owl:Class ;
+                 rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#HistroyTextBook
+:HistroyTextBook rdf:type owl:Class ;
+                 rdfs:subClassOf :TextBook .
+
+
+###  http://www.example.com/BookOntology#HorrorBookContent
+:HorrorBookContent rdf:type owl:Class ;
+                   rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#LasersBookContent
+:LasersBookContent rdf:type owl:Class ;
+                   rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#MagicBookContent
+:MagicBookContent rdf:type owl:Class ;
+                  rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#MathTextBook
+:MathTextBook rdf:type owl:Class ;
+              rdfs:subClassOf :TextBook .
+
+
+###  http://www.example.com/BookOntology#MonstersBookContent
+:MonstersBookContent rdf:type owl:Class ;
+                     rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#MurderBookContent
+:MurderBookContent rdf:type owl:Class ;
+                   rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#NonFiction
+:NonFiction rdf:type owl:Class ;
+            rdfs:subClassOf :Book .
+
+
+###  http://www.example.com/BookOntology#OrcsBookContent
+:OrcsBookContent rdf:type owl:Class ;
+                 rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#Rating
+:Rating rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :ratedBook ;
+                          owl:someValuesFrom :Book
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :rating ;
+                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                               owl:onDatatype xsd:double ;
+                                               owl:withRestrictions ( [ xsd:minInclusive "0.0"^^xsd:double
+                                                                      ]
+                                                                      [ xsd:maxInclusive "5.0"^^xsd:double
+                                                                      ]
+                                                                    )
+                                             ]
+                        ] .
+
+
+###  http://www.example.com/BookOntology#Reader
+:Reader rdf:type owl:Class .
+
+
+###  http://www.example.com/BookOntology#RecipieBookContent
+:RecipieBookContent rdf:type owl:Class ;
+                    rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#SciFi
+:SciFi rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Fiction
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :contains ;
+                                                    owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                         owl:unionOf ( :AliensBookContent
+                                                                                       :LasersBookContent
+                                                                                       :SpaceBookContent
+                                                                                       :SpashipsBookContent
+                                                                                     )
+                                                                       ]
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://www.example.com/BookOntology#ScienceTextBook
+:ScienceTextBook rdf:type owl:Class ;
+                 rdfs:subClassOf :TextBook .
+
+
+###  http://www.example.com/BookOntology#SpaceBookContent
+:SpaceBookContent rdf:type owl:Class ;
+                  rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#SpashipsBookContent
+:SpashipsBookContent rdf:type owl:Class ;
+                     rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#TextBook
+:TextBook rdf:type owl:Class ;
+          rdfs:subClassOf :NonFiction .
+
+
+###  http://www.example.com/BookOntology#WarBookContent
+:WarBookContent rdf:type owl:Class ;
+                rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#WizardsBookContent
+:WizardsBookContent rdf:type owl:Class ;
+                    rdfs:subClassOf :BookContent .
+
+
+###  http://www.example.com/BookOntology#Young_Adult
+:Young_Adult rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Fiction
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :intendedAge ;
+                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                               owl:onDatatype xsd:int ;
+                                                                               owl:withRestrictions ( [ xsd:maxInclusive "14"^^xsd:int
+                                                                                                      ]
+                                                                                                    )
+                                                                             ]
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] .
+
+
+###  http://www.example.com/BookOntology#Myster_&_Suspense
+<http://www.example.com/BookOntology#Myster_&_Suspense> rdf:type owl:Class ;
+                                                        owl:equivalentClass [ owl:intersectionOf ( :Fiction
+                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                     owl:onProperty :contains ;
+                                                                                                     owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                                          owl:unionOf ( :EspionageBookContent
+                                                                                                                                        :GhostsBookContent
+                                                                                                                                        :HorrorBookContent
+                                                                                                                                        :MonstersBookContent
+                                                                                                                                        :MurderBookContent
+                                                                                                                                      )
+                                                                                                                        ]
+                                                                                                   ]
+                                                                                                 ) ;
+                                                                              rdf:type owl:Class
+                                                                            ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.com/BookOntology#AliensBookContent
+:AliensBookContent rdf:type owl:NamedIndividual ,
+                            :AliensBookContent .
+
+
+###  http://www.example.com/BookOntology#BattlesBookContent
+:BattlesBookContent rdf:type owl:NamedIndividual ,
+                             :BattlesBookContent .
+
+
+###  http://www.example.com/BookOntology#BrandonSanderson
+:BrandonSanderson rdf:type owl:NamedIndividual ;
+                  :Wrote :Mistborn ,
+                         :TheWayOfKings ;
+                  :name "Brandon Sanderson"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#DragonsBookContent
+:DragonsBookContent rdf:type owl:NamedIndividual ,
+                             :DragonsBookContent .
+
+
+###  http://www.example.com/BookOntology#ElvesBookContent
+:ElvesBookContent rdf:type owl:NamedIndividual ,
+                           :ElvesBookContent .
+
+
+###  http://www.example.com/BookOntology#EndersGame
+:EndersGame rdf:type owl:NamedIndividual ,
+                     :Fiction ,
+                     :SciFi ;
+            :contains :LasersBookContent ,
+                      :SpaceBookContent ,
+                      :SpaceshipsBookContent ;
+            :pageCount "232"^^xsd:int ;
+            :title "Enders Game"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#EspionageBookContent
+:EspionageBookContent rdf:type owl:NamedIndividual ,
+                               :EspionageBookContent .
+
+
+###  http://www.example.com/BookOntology#GhostsBookContent
+:GhostsBookContent rdf:type owl:NamedIndividual ,
+                            :GhostsBookContent .
+
+
+###  http://www.example.com/BookOntology#GoblinsBookContent
+:GoblinsBookContent rdf:type owl:NamedIndividual ,
+                             :GoblinsBookContent .
+
+
+###  http://www.example.com/BookOntology#GunsBookContent
+:GunsBookContent rdf:type owl:NamedIndividual ,
+                          :GunsBookContent .
+
+
+###  http://www.example.com/BookOntology#HarryPotterAndTheSorcerorsStone
+:HarryPotterAndTheSorcerorsStone rdf:type owl:NamedIndividual ,
+                                          :Fantasy ,
+                                          :Fiction ,
+                                          :Young_Adult ;
+                                 :contains :MagicBookContent ;
+                                 :intendedAge "12"^^xsd:int ;
+                                 :pageCount "309"^^xsd:int ;
+                                 :title "Harry Potter and the Sorcerors Stone"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#HorrorBookContent
+:HorrorBookContent rdf:type owl:NamedIndividual ,
+                            :HorrorBookContent .
+
+
+###  http://www.example.com/BookOntology#JKRowling
+:JKRowling rdf:type owl:NamedIndividual ;
+           :Wrote :HarryPotterAndTheSorcerorsStone .
+
+
+###  http://www.example.com/BookOntology#JRRTolkien
+:JRRTolkien rdf:type owl:NamedIndividual ;
+            :Wrote :TheHobbit .
+
+
+###  http://www.example.com/BookOntology#LasersBookContent
+:LasersBookContent rdf:type owl:NamedIndividual ,
+                            :LasersBookContent .
+
+
+###  http://www.example.com/BookOntology#MagicBookContent
+:MagicBookContent rdf:type owl:NamedIndividual ,
+                           :MagicBookContent .
+
+
+###  http://www.example.com/BookOntology#Mistborn
+:Mistborn rdf:type owl:NamedIndividual ,
+                   :Action ,
+                   :Fantasy ,
+                   :Fiction ;
+          :IsWrittenBy :BrandonSanderson ;
+          :contains :BattlesBookContent ,
+                    :MagicBookContent ;
+          :pageCount "541"^^xsd:int ;
+          :title "Mostborn: The Final Empire"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#MonstersBookContent
+:MonstersBookContent rdf:type owl:NamedIndividual ,
+                              :MonstersBookContent .
+
+
+###  http://www.example.com/BookOntology#MurderBookContent
+:MurderBookContent rdf:type owl:NamedIndividual ,
+                            :MurderBookContent .
+
+
+###  http://www.example.com/BookOntology#OrcsBookContent
+:OrcsBookContent rdf:type owl:NamedIndividual ,
+                          :OrcsBookContent .
+
+
+###  http://www.example.com/BookOntology#OrsonScottCard
+:OrsonScottCard rdf:type owl:NamedIndividual ;
+                :Wrote :EndersGame ;
+                :name "Orson Scott Card"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#Rating1
+:Rating1 rdf:type owl:NamedIndividual ;
+         :ratedBook :TheWayOfKings ;
+         :ratingWroteBy :Reader1 ;
+         :rating "4.5"^^xsd:double .
+
+
+###  http://www.example.com/BookOntology#Rating2
+:Rating2 rdf:type owl:NamedIndividual ;
+         :ratedBook :Mistborn ;
+         :ratingWroteBy :Reader1 ;
+         :rating "3.5"^^xsd:double .
+
+
+###  http://www.example.com/BookOntology#Rating3
+:Rating3 rdf:type owl:NamedIndividual ;
+         :ratedBook :TheHobbit ;
+         :ratingWroteBy :Reader2 ;
+         :rating "4.0"^^xsd:double .
+
+
+###  http://www.example.com/BookOntology#Rating4
+:Rating4 rdf:type owl:NamedIndividual ;
+         :ratedBook :TheWayOfKings ;
+         :ratingWroteBy :Reader2 ;
+         :rating "4.0"^^xsd:double .
+
+
+###  http://www.example.com/BookOntology#Rating5
+:Rating5 rdf:type owl:NamedIndividual ;
+         :ratedBook :TheBourneIdentity ;
+         :ratingWroteBy :Reader2 ;
+         :rating "4.8"^^xsd:double .
+
+
+###  http://www.example.com/BookOntology#Reader1
+:Reader1 rdf:type owl:NamedIndividual ;
+         :wroteRating :Rating1 ,
+                      :Rating2 .
+
+
+###  http://www.example.com/BookOntology#Reader2
+:Reader2 rdf:type owl:NamedIndividual ;
+         :wroteRating :Rating3 ,
+                      :Rating4 ,
+                      :Rating5 .
+
+
+###  http://www.example.com/BookOntology#RobertLudlum
+:RobertLudlum rdf:type owl:NamedIndividual ;
+              :Wrote :TheBourneIdentity .
+
+
+###  http://www.example.com/BookOntology#SpaceBookContent
+:SpaceBookContent rdf:type owl:NamedIndividual ,
+                           :SpaceBookContent .
+
+
+###  http://www.example.com/BookOntology#SpaceshipsBookContent
+:SpaceshipsBookContent rdf:type owl:NamedIndividual ,
+                                :SpashipsBookContent .
+
+
+###  http://www.example.com/BookOntology#TheBourneIdentity
+:TheBourneIdentity rdf:type owl:NamedIndividual ,
+                            :Fiction ,
+                            <http://www.example.com/BookOntology#Myster_&_Suspense> ;
+                   :IsWrittenBy :RobertLudlum ;
+                   :contains :EspionageBookContent ;
+                   :pageCount "523"^^xsd:int ;
+                   :title "The Bourne Identity"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#TheHobbit
+:TheHobbit rdf:type owl:NamedIndividual ,
+                    :Action ,
+                    :Fantasy ,
+                    :Fiction ;
+           :contains :BattlesBookContent ,
+                     :DragonsBookContent ,
+                     :ElvesBookContent ,
+                     :OrcsBookContent ;
+           :pageCount "310"^^xsd:int ;
+           :title "The Hobbit: An Unexpected Journey"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#TheWayOfKings
+:TheWayOfKings rdf:type owl:NamedIndividual ,
+                        :Action ,
+                        :Fantasy ,
+                        :Fiction ;
+               :contains :BattlesBookContent ,
+                         :MagicBookContent ,
+                         :WarBookContent ;
+               :pageCount "1007"^^xsd:int ;
+               :title "The Way of Kings"^^xsd:string .
+
+
+###  http://www.example.com/BookOntology#WarBookContent
+:WarBookContent rdf:type owl:NamedIndividual ,
+                         :WarBookContent .
+
+
+###  http://www.example.com/BookOntology#WizardsBookContent
+:WizardsBookContent rdf:type owl:NamedIndividual ,
+                             :WizardsBookContent .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AliensBookContent
+                :BattlesBookContent
+                :DragonsBookContent
+                :ElvesBookContent
+                :EspionageBookContent
+                :GhostsBookContent
+                :GoblinsBookContent
+                :GunsBookContent
+                :HorrorBookContent
+                :LasersBookContent
+                :MagicBookContent
+                :MonstersBookContent
+                :MurderBookContent
+                :OrcsBookContent
+                :SpaceBookContent
+                :SpashipsBookContent
+                :WarBookContent
+                :WizardsBookContent
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Biography
+                :CookBook
+                :TextBook
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :HistroyTextBook
+                :MathTextBook
+                :ScienceTextBook
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
