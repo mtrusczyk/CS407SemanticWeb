@@ -1,0 +1,852 @@
+@prefix : <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology> .
+
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology> rdf:type owl:Ontology ;
+                                                                                     owl:imports <http://www.example.com/BookOntology#> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.com/BookOntology#IsWrittenBy
+<http://www.example.com/BookOntology#IsWrittenBy> owl:equivalentProperty <http://www.example.com/BookOntology#Wrote> ,
+                                                                         :Wrote ;
+                                                  rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.com/BookOntology#Wrote
+<http://www.example.com/BookOntology#Wrote> owl:equivalentProperty :Wrote ;
+                                            rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.com/BookOntology#isFeaturedIn
+<http://www.example.com/BookOntology#isFeaturedIn> owl:equivalentProperty <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> ;
+                                                   rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.example.com/BookOntology#ratingWroteBy
+<http://www.example.com/BookOntology#ratingWroteBy> owl:equivalentProperty <http://www.example.com/BookOntology#wroteRating> .
+
+
+###  http://www.example.com/BookOntology#wroteRating
+<http://www.example.com/BookOntology#wroteRating> rdfs:subPropertyOf <http://www.example.com/BookOntology#ratingWroteBy> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyWrote
+:Wrote rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf <http://www.example.com/BookOntology#IsWrittenBy> ;
+       rdfs:label "WrittenBy" .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.example.com/BookOntology#name
+<http://www.example.com/BookOntology#name> owl:equivalentProperty <http://www.example.com/BookOntology#title> ;
+                                           rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.example.com/BookOntology#pageCount
+<http://www.example.com/BookOntology#pageCount> owl:equivalentProperty <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> .
+
+
+###  http://www.example.com/BookOntology#title
+<http://www.example.com/BookOntology#title> rdfs:subPropertyOf <http://www.example.com/BookOntology#name> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> rdf:type owl:DatatypeProperty ;
+                                                                rdfs:subPropertyOf <http://www.example.com/BookOntology#pageCount> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.example.com/BookOntology#Biography
+<http://www.example.com/BookOntology#Biography> owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                      owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent>
+                                                                    ] .
+
+
+###  http://www.example.com/BookOntology#HistroyTextBook
+<http://www.example.com/BookOntology#HistroyTextBook> owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                            owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent>
+                                                                          ] .
+
+
+###  http://www.example.com/BookOntology#MathTextBook
+<http://www.example.com/BookOntology#MathTextBook> owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                         owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent>
+                                                                       ] .
+
+
+###  http://www.example.com/BookOntology#ScienceTextBook
+<http://www.example.com/BookOntology#ScienceTextBook> owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                            owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent>
+                                                                          ] .
+
+
+###  http://www.example.com/BookOntology#SpaceBookContent
+<http://www.example.com/BookOntology#SpaceBookContent> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.example.com/BookOntology#SpashipsBookContent
+<http://www.example.com/BookOntology#SpashipsBookContent> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.example.com/BookOntology#WarBookContent
+<http://www.example.com/BookOntology#WarBookContent> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.example.com/BookOntology#WizardsBookContent
+<http://www.example.com/BookOntology#WizardsBookContent> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.example.com/BookOntology#Book> ,
+                                                                                 [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://www.example.com/BookOntology#name> ;
+                                                                                   owl:someValuesFrom xsd:string
+                                                                                 ] .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent> rdf:type owl:Class ;
+                                                                             rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Genre
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Genre> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.example.com/BookOntology#Book> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/GraphicNovel
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/GraphicNovel> rdf:type owl:Class ;
+                                                                       owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                                             owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent>
+                                                                                           ] ,
+                                                                                           [ rdf:type owl:Restriction ;
+                                                                                             owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                                             owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent>
+                                                                                           ] ;
+                                                                       rdfs:subClassOf <http://www.example.com/BookOntology#Fiction> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Historical
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Historical> rdf:type owl:Class ;
+                                                                     owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                                           owl:someValuesFrom <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent>
+                                                                                         ] ;
+                                                                     rdfs:subClassOf <http://www.example.com/BookOntology#NonFiction> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Horror
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Horror> rdf:type owl:Class ;
+                                                                 owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                       owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                                       owl:someValuesFrom <http://www.example.com/BookOntology#HorrorBookContent>
+                                                                                     ] ;
+                                                                 rdfs:subClassOf <http://www.example.com/BookOntology#Fiction> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScienceFiction
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScienceFiction> rdf:type owl:Class ;
+                                                                         owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                                               owl:someValuesFrom <http://www.example.com/BookOntology#MurderBookContent>
+                                                                                             ] ,
+                                                                                             [ rdf:type owl:Restriction ;
+                                                                                               owl:onProperty <http://www.example.com/BookOntology#contains> ;
+                                                                                               owl:someValuesFrom <http://www.example.com/BookOntology#SpaceBookContent>
+                                                                                             ] ;
+                                                                         rdfs:subClassOf <http://www.example.com/BookOntology#Fiction> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ShortStory
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ShortStory> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.example.com/BookOntology#Fiction> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.example.com/BookOntology#Book> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology#AdventureBookContent
+:AdventureBookContent rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology#SadBookContent
+:SadBookContent rdf:type owl:Class ;
+                rdfs:subClassOf <http://www.example.com/BookOntology#BookContent> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.com/BookOntology#BrandonSanderson
+<http://www.example.com/BookOntology#BrandonSanderson> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.example.com/BookOntology#EndersGame
+<http://www.example.com/BookOntology#EndersGame> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> .
+
+
+###  http://www.example.com/BookOntology#HarryPotterAndTheSorcerorsStone
+<http://www.example.com/BookOntology#HarryPotterAndTheSorcerorsStone> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                      <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#WizardsBookContent> ,
+                                                                                                                     :AdventureBookContent .
+
+
+###  http://www.example.com/BookOntology#JRRTolkien
+<http://www.example.com/BookOntology#JRRTolkien> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.example.com/BookOntology#Rating1
+<http://www.example.com/BookOntology#Rating1> rdf:type <http://www.example.com/BookOntology#Rating> .
+
+
+###  http://www.example.com/BookOntology#Rating2
+<http://www.example.com/BookOntology#Rating2> rdf:type <http://www.example.com/BookOntology#Rating> .
+
+
+###  http://www.example.com/BookOntology#Rating3
+<http://www.example.com/BookOntology#Rating3> rdf:type <http://www.example.com/BookOntology#Rating> .
+
+
+###  http://www.example.com/BookOntology#Rating4
+<http://www.example.com/BookOntology#Rating4> rdf:type <http://www.example.com/BookOntology#Rating> .
+
+
+###  http://www.example.com/BookOntology#Rating5
+<http://www.example.com/BookOntology#Rating5> rdf:type <http://www.example.com/BookOntology#Rating> .
+
+
+###  http://www.example.com/BookOntology#Reader1
+<http://www.example.com/BookOntology#Reader1> rdf:type <http://www.example.com/BookOntology#Reader> ;
+                                              <http://www.example.com/BookOntology#ratedBook> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Martian> .
+
+
+###  http://www.example.com/BookOntology#Reader2
+<http://www.example.com/BookOntology#Reader2> rdf:type <http://www.example.com/BookOntology#Reader> .
+
+
+###  http://www.example.com/BookOntology#RobertLudlum
+<http://www.example.com/BookOntology#RobertLudlum> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.example.com/BookOntology#TheBourneIdentity
+<http://www.example.com/BookOntology#TheBourneIdentity> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> .
+
+
+###  http://www.example.com/BookOntology#TheHobbit
+<http://www.example.com/BookOntology#TheHobbit> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> .
+
+
+###  http://www.example.com/BookOntology#TheWayOfKings
+<http://www.example.com/BookOntology#TheWayOfKings> rdf:type <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/A_Brief_History_of_Time
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/A_Brief_History_of_Time> rdf:type owl:NamedIndividual ,
+                                                                                           <http://www.example.com/BookOntology#NonFiction> ,
+                                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                  <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> ;
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/A_Brief_History_of_Time> ;
+                                                                                  <http://www.example.com/BookOntology#pageCount> 256 ;
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 256 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Agatha_Christie
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Agatha_Christie> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                          :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/And_Then_There_Were_None> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Alan_Moore
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Alan_Moore> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                     :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Watchmen> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/And_Then_There_Were_None
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/And_Then_There_Were_None> rdf:type owl:NamedIndividual ,
+                                                                                            <http://www.example.com/BookOntology#Fiction> ,
+                                                                                            <http://www.example.com/BookOntology#Myster_&_Suspense> ,
+                                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                   <http://www.example.com/BookOntology#contains> :AdventureBookContent ;
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/And_Then_There_Were_None> ;
+                                                                                   <http://www.example.com/BookOntology#pageCount> 272 ;
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 272 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Andy_Weir
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Andy_Weir> rdf:type owl:NamedIndividual ,
+                                                                             <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                    :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Martian> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Arthur_Golden
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Arthur_Golden> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                        :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Memoirs_of_a_Geisha> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Carrie
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Carrie> rdf:type owl:NamedIndividual ,
+                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Horror> ,
+                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                 <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Carrie> ;
+                                                                 <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 199 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Charlotte_Perkins_Gilman
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Charlotte_Perkins_Gilman> rdf:type owl:NamedIndividual ,
+                                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                                   :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Yellow_Wallpaper> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent> rdf:type owl:NamedIndividual ,
+                                                                                      <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Conan_Doyle
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Conan_Doyle> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                      :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Adventures_of_Sherlock_Holmes> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Edgar_Allan_Poe
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Edgar_Allan_Poe> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                          :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Cask_of_Amontillado> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> rdf:type owl:NamedIndividual ,
+                                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/F._Scott_Fitzgerald
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/F._Scott_Fitzgerald> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                              :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Great_Gatsby> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Harper_Lee
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Harper_Lee> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                     :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/To_Kill_a_Mockingbird> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyAgatha_Christie
+:Agatha_Christie rdf:type owl:NamedIndividual ,
+                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyAlan_Moore
+:Alan_Moore rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyAndy_Weir
+:Andy_Weir rdf:type owl:NamedIndividual ,
+                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyAnne_Frank
+:Anne_Frank rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyArthur_Golden
+:Arthur_Golden rdf:type owl:NamedIndividual ,
+                        <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyCharlotte_Perkins_Gilman
+:Charlotte_Perkins_Gilman rdf:type owl:NamedIndividual ,
+                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyConan_Doyle
+:Conan_Doyle rdf:type owl:NamedIndividual ,
+                      <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyEdgar_Allan_Poe
+:Edgar_Allan_Poe rdf:type owl:NamedIndividual ,
+                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyF._Scott_Fitzgerald
+:F._Scott_Fitzgerald rdf:type owl:NamedIndividual ,
+                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyHarper_Lee
+:Harper_Lee rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyJK_Rowling
+:JK_Rowling rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyJames_Dashner
+:James_Dashner rdf:type owl:NamedIndividual ,
+                        <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyJohn_Green
+:John_Green rdf:type owl:NamedIndividual ,
+                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyKathyrn_Stockett
+:Kathyrn_Stockett rdf:type owl:NamedIndividual ,
+                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyLouisa_May_Alcott
+:Louisa_May_Alcott rdf:type owl:NamedIndividual ,
+                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyRobert_Kirkman
+:Robert_Kirkman rdf:type owl:NamedIndividual ,
+                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyShirley_Jackson
+:Shirley_Jackson rdf:type owl:NamedIndividual ,
+                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyStephen_Hawking
+:Stephen_Hawking rdf:type owl:NamedIndividual ,
+                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologyStephen_King
+:Stephen_King rdf:type owl:NamedIndividual ,
+                       <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_OntologySuzanne_Collins
+:Suzanne_Collins rdf:type owl:NamedIndividual ,
+                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/JK_Rowling
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/JK_Rowling> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                     <http://www.example.com/BookOntology#Wrote> <http://www.example.com/BookOntology#HarryPotterAndTheSorcerorsStone> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/James_Dashner
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/James_Dashner> rdf:type owl:NamedIndividual ,
+                                                                                 <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                        :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Death_Cure> ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fever_Code> ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Kill_Order> ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Scorch_Trials> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/John_Green
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/John_Green> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                     :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fault_In_Our_Stars> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Kathyrn_Stockett
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Kathyrn_Stockett> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                           :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Little_Women> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Little_Women
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Little_Women> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                       <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Little_Women> ;
+                                                                       <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 759 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Louisa_May_Alcott
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Louisa_May_Alcott> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                            :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Little_Women> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Memoirs_of_a_Geisha
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Memoirs_of_a_Geisha> rdf:type owl:NamedIndividual ,
+                                                                                       <http://www.example.com/BookOntology#NonFiction> ,
+                                                                                       <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Historical> ,
+                                                                                       <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                              <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> ;
+                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Memoirs_of_a_Geisha> ;
+                                                                              <http://www.example.com/BookOntology#pageCount> 448 ;
+                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 448 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating6
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating6> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.example.com/BookOntology#Rating> ;
+                                                                  <http://www.example.com/BookOntology#ratedBook> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Yellow_Wallpaper> ;
+                                                                  <http://www.example.com/BookOntology#ratingWroteBy> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Reader3> ;
+                                                                  <http://www.example.com/BookOntology#rating> "4.2"^^xsd:double .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating7
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating7> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.example.com/BookOntology#Rating> ;
+                                                                  <http://www.example.com/BookOntology#ratedBook> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Martian> ;
+                                                                  <http://www.example.com/BookOntology#ratingWroteBy> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Reader3> ;
+                                                                  <http://www.example.com/BookOntology#rating> "4.8"^^xsd:double .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating8
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating8> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.example.com/BookOntology#Rating> ;
+                                                                  <http://www.example.com/BookOntology#ratedBook> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Hunger_Games> ;
+                                                                  <http://www.example.com/BookOntology#ratingWroteBy> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Reader3> ;
+                                                                  <http://www.example.com/BookOntology#rating> "3.0"^^xsd:double .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Reader3
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Reader3> rdf:type owl:NamedIndividual ,
+                                                                           <http://www.example.com/BookOntology#Reader> ;
+                                                                  <http://www.example.com/BookOntology#wroteRating> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating6> ,
+                                                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating7> ,
+                                                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Rating8> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Robert_Kirkman
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Robert_Kirkman> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                         :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Walking_Dead> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Shirley_Jackson
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Shirley_Jackson> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                          :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Haunting_of_Hill_House> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Stephen_Hawking
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Stephen_Hawking> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                          :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/A_Brief_History_of_Time> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Stephen_King
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Stephen_King> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                       :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Carrie> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Suzanne_Collins
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Suzanne_Collins> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ;
+                                                                          :Wrote <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Hunger_Games> .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Adventures_of_Sherlock_Holmes
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Adventures_of_Sherlock_Holmes> rdf:type owl:NamedIndividual ,
+                                                                                                     <http://www.example.com/BookOntology#Fiction> ,
+                                                                                                     <http://www.example.com/BookOntology#Myster_&_Suspense> ,
+                                                                                                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                            <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#EspionageBookContent> ,
+                                                                                                                                           :AdventureBookContent ;
+                                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Adventures_of_Sherlock_Holmes> ;
+                                                                                            <http://www.example.com/BookOntology#pageCount> 307 ;
+                                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 307 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Cask_of_Amontillado
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Cask_of_Amontillado> rdf:type owl:NamedIndividual ,
+                                                                                           <http://www.example.com/BookOntology#Fiction> ,
+                                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ShortStory> ,
+                                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                  <http://www.example.com/BookOntology#contains> :AdventureBookContent ;
+                                                                                  <http://www.example.com/BookOntology#pageCount> 32 ;
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 32 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Death_Cure
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Death_Cure> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.example.com/BookOntology#Action> ,
+                                                                                  <http://www.example.com/BookOntology#Fiction> ,
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                         <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#MurderBookContent> ,
+                                                                                                                        <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Death_Cure> ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ;
+                                                                         <http://www.example.com/BookOntology#pageCount> 325 ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 325 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Diary_Of_A_Young_Girl
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Diary_Of_A_Young_Girl> rdf:type owl:NamedIndividual ,
+                                                                                             <http://www.example.com/BookOntology#NonFiction> ,
+                                                                                             <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Author> ,
+                                                                                             <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                    <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> ;
+                                                                                    <http://www.example.com/BookOntology#pageCount> 352 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fault_In_Our_Stars
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fault_In_Our_Stars> rdf:type owl:NamedIndividual ,
+                                                                                          <http://www.example.com/BookOntology#Fiction> ,
+                                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                 <http://www.example.com/BookOntology#contains> :SadBookContent ;
+                                                                                 <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fault_In_Our_Stars> ;
+                                                                                 <http://www.example.com/BookOntology#pageCount> 313 ;
+                                                                                 <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 313 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fever_Code
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Fever_Code> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.example.com/BookOntology#Action> ,
+                                                                                  <http://www.example.com/BookOntology#Fiction> ,
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                         <http://www.example.com/BookOntology#contains> :AdventureBookContent ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ;
+                                                                         <http://www.example.com/BookOntology#pageCount> 347 ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 347 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Great_Gatsby
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Great_Gatsby> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.example.com/BookOntology#Fiction> ,
+                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                           <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent> ;
+                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Great_Gatsby> ;
+                                                                           <http://www.example.com/BookOntology#pageCount> 218 ;
+                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 218 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Haunting_of_Hill_House
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Haunting_of_Hill_House> rdf:type owl:NamedIndividual ,
+                                                                                              <http://www.example.com/BookOntology#Fiction> ,
+                                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Horror> ,
+                                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                     <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#GhostsBookContent> ,
+                                                                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> ;
+                                                                                     <http://www.example.com/BookOntology#pageCount> 246 ;
+                                                                                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 246 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Help
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Help> rdf:type owl:NamedIndividual ,
+                                                                            <http://www.example.com/BookOntology#Fiction> ,
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Historical> ,
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                   <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent> ,
+                                                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> ;
+                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Help> ;
+                                                                   <http://www.example.com/BookOntology#pageCount> 524 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Hunger_Games
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Hunger_Games> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.example.com/BookOntology#Fiction> ,
+                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScienceFiction> ;
+                                                                           <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#MurderBookContent> ;
+                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Hunger_Games> ;
+                                                                           <http://www.example.com/BookOntology#pageCount> 374 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Kill_Order
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Kill_Order> rdf:type owl:NamedIndividual ,
+                                                                                  <http://www.example.com/BookOntology#Action> ,
+                                                                                  <http://www.example.com/BookOntology#Fiction> ,
+                                                                                  <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                         <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#MurderBookContent> ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ;
+                                                                         <http://www.example.com/BookOntology#pageCount> 384 ;
+                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 384 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Martian
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Martian> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.example.com/BookOntology#Fiction> ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScienceFiction> ,
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                      <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#SpaceBookContent> ,
+                                                                                                                     <http://www.example.com/BookOntology#SpaceshipsBookContent> ,
+                                                                                                                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> ;
+                                                                      <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Martian> ;
+                                                                      <http://www.example.com/BookOntology#pageCount> 369 ;
+                                                                      <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 369 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> rdf:type owl:NamedIndividual ,
+                                                                                   <http://www.example.com/BookOntology#Action> ,
+                                                                                   <http://www.example.com/BookOntology#Fiction> ,
+                                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                          <http://www.example.com/BookOntology#contains> :AdventureBookContent ;
+                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ;
+                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ;
+                                                                          <http://www.example.com/BookOntology#pageCount> 375 ;
+                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 375 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Scorch_Trials
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Scorch_Trials> rdf:type owl:NamedIndividual ,
+                                                                                     <http://www.example.com/BookOntology#Action> ,
+                                                                                     <http://www.example.com/BookOntology#Fiction> ,
+                                                                                     <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                            <http://www.example.com/BookOntology#contains> :AdventureBookContent ;
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Scorch_Trials> ;
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Part_Of_Series> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Maze_Runner> ;
+                                                                            <http://www.example.com/BookOntology#pageCount> 361 ;
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 361 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Walking_Dead
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Walking_Dead> rdf:type owl:NamedIndividual ,
+                                                                                    <http://www.example.com/BookOntology#Fiction> ,
+                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/GraphicNovel> ,
+                                                                                    <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                           <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#MurderBookContent> ,
+                                                                                                                          <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> ;
+                                                                           <http://www.example.com/BookOntology#pageCount> 144 ;
+                                                                           <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 144 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Yellow_Wallpaper
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/The_Yellow_Wallpaper> rdf:type owl:NamedIndividual ,
+                                                                                        <http://www.example.com/BookOntology#Fiction> ,
+                                                                                        <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ShortStory> ,
+                                                                                        <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                               <http://www.example.com/BookOntology#contains> <http://www.example.com/BookOntology#GhostsBookContent> ,
+                                                                                                                              <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent> ;
+                                                                               <http://www.example.com/BookOntology#pageCount> 38 ;
+                                                                               <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 38 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/To_Kill_a_Mockingbird
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/To_Kill_a_Mockingbird> rdf:type owl:NamedIndividual ,
+                                                                                         <http://www.example.com/BookOntology#Fiction> ,
+                                                                                         <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                                <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent> ,
+                                                                                                                               :AdventureBookContent ;
+                                                                                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/To_Kill_a_Mockingbird> ;
+                                                                                <http://www.example.com/BookOntology#pageCount> 296 ;
+                                                                                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 296 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Watchmen
+<http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Watchmen> rdf:type owl:NamedIndividual ,
+                                                                            <http://www.example.com/BookOntology#Fiction> ,
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/GraphicNovel> ,
+                                                                            <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Title> ;
+                                                                   <http://www.example.com/BookOntology#contains> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent> ;
+                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Made_Into_Movie> <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Watchmen> ;
+                                                                   <http://www.example.com/BookOntology#pageCount> 416 ;
+                                                                   <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Pages> 416 .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology#AdventureBookContent
+:AdventureBookContent rdf:type owl:NamedIndividual ,
+                               :AdventureBookContent .
+
+
+###  http://www.semanticweb.org/tiaquessa/ontologies/2020/10/Iaquessa_Library_Ontology#SadBookContent
+:SadBookContent rdf:type owl:NamedIndividual ,
+                         :SadBookContent .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://www.example.com/BookOntology#AliensBookContent>
+                <http://www.example.com/BookOntology#BattlesBookContent>
+                <http://www.example.com/BookOntology#DragonsBookContent>
+                <http://www.example.com/BookOntology#ElvesBookContent>
+                <http://www.example.com/BookOntology#EspionageBookContent>
+                <http://www.example.com/BookOntology#GhostsBookContent>
+                <http://www.example.com/BookOntology#GoblinsBookContent>
+                <http://www.example.com/BookOntology#GunsBookContent>
+                <http://www.example.com/BookOntology#HorrorBookContent>
+                <http://www.example.com/BookOntology#LasersBookContent>
+                <http://www.example.com/BookOntology#MagicBookContent>
+                <http://www.example.com/BookOntology#MonstersBookContent>
+                <http://www.example.com/BookOntology#MurderBookContent>
+                <http://www.example.com/BookOntology#OrcsBookContent>
+                <http://www.example.com/BookOntology#RecipieBookContent>
+                <http://www.example.com/BookOntology#SpaceBookContent>
+                <http://www.example.com/BookOntology#SpashipsBookContent>
+                <http://www.example.com/BookOntology#WarBookContent>
+                <http://www.example.com/BookOntology#WizardsBookContent>
+                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ClassicBookContent>
+                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/EducationalBookContent>
+                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/ScaryBookContent>
+                <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/SuperHeroBookContent>
+                :AdventureBookContent
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

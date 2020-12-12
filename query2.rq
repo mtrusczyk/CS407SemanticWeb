@@ -1,0 +1,13 @@
+# filename: query2.rq
+PREFIX book: <http://www.semanticweb.org/tiaquessa/ontologies/2020/10/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://www.example.com/BookOntology#>
+
+
+Select ?genre
+WHERE {
+  :Reader1 :wroteRating ?rating .
+  ?rating :ratedBook/rdf:type ?genre .
+  filter (?genre != <http://www.w3.org/2002/07/owl#NamedIndividual>)
+}
+Group by ?genre
